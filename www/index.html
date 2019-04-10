@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="assets/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="assets/vendors/bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="assets/vendors/bower_components/jquery.scrollbar/jquery.scrollbar.css">
+    <link rel="stylesheet" href="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="assets/vendors/bower_components/sweetalert2/dist/sweetalert2.min.css">
+    <!-- app -->
+    <script src="app/route.js"></script>
+    <script src="app/controllers.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    </script>
+    <!-- App styles -->
+    <link rel="stylesheet" href="assets/css/app.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body data-ma-theme="green">
+    <main class="main">
+        <div class="page-loader">
+            <div class="page-loader__spinner">
+                <svg viewBox="25 25 50 50">
+                    <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
+         
+        <header class="header">
+            <div class="title">
+                Perpustakaan SDIT ANNI'MAH
+        </header>
+
+      
+        <section class="item">
+            <!-- components halaman di sini -->
+            <div class="container">
+                <center>
+                    <font color="white">
+                    <a href="index.html" class="btn btn-primary"><i class="zmdi zmdi-book"></i> Buku</a>
+                    <a href="kelas.html" class="btn btn-primary"><i class="zmdi zmdi-balance"></i> Kelas</a>
+                    <a href="siswa.html" class="btn btn-primary"><i class="zmdi zmdi-accounts"></i> Siswa</a>
+                    <a href="pinjam.html" class="btn btn-primary"><i class="zmdi zmdi-assignment"></i>Peminjaman Buku</a>
+                        <br>
+                        <br>
+                    <a href="kembali.html" class="btn btn-primary"><i class="zmdi zmdi-assignment-check"></i> Pengembalian Buku</a>
+                    <a href="pengunjung.html" class="btn btn-primary"><i class="zmdi zmdi-account"></i>Pengunjung</a>
+                </center>
+                <br>
+                <br>
+                <div class="row" id="this">
+               
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script src="assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendors/bower_components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="assets/js/index.js"></script>
+    <!-- App functions and actions -->
+    <script src="assets/js/app.min.js"></script>
+    <script src="assets/js/jquery.cookie.js"></script>
+    <script>
+        // script
+        var baseUrl = 'http://192.168.43.92:8000/'
+
+        $.ajax({
+        	url: baseUrl+'api/buku',
+        	dataType: 'JSON',
+        	success: function(data){
+                console.log(data)
+        		var inject = '';
+        		var tersedia = '';
+        		$.each(data,function(i,val){
+        			if (val.tersedia <= 0) {
+        				tersedia = '<span class="badge badge-danger text-light float-right">Kosong</span>';
+        			} else { 
+        				tersedia = '<span class="badge badge-primary float-right">Tersedia ' +val.tersedia+ '</span>';
+        			}
+
+        			inject+=
+        			'<div class="col-md-6">'+
+        			'<div class="card">'+
+        			'<img class="card-img-top"src="'+baseUrl+'upload/foto/'+val.foto+'">'+
+        			'<div class="card-body">'+
+        			'<h3>'+val.judul+'</h3>'+
+        			// '<h3>'+val.jenis_buku+'</h3>'+
+        			// '<h3>'+val.kode_buku+'</h3>'+
+        			// '<h3>'+val.pengarang+'</h3>'+
+        			// '<h3>'+val.tahun_terbit+'</h3>'+
+        			// '<h3>'+val.penerbit+'</h3>'+
+                    tersedia+
+        		'</div>'+
+        		'</div>'+
+        		'</div>';
+
+        		});
+        		$('#this').append(inject);
+        	},
+        	error: function(data){
+        		alert('terjadi kesalahan');
+        	}
+        })
+    </script>
+    <link href="kelas.html">
+</body>
+
+</html>

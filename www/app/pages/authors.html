@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-6" style="display: none;" id="form_div">
+    	<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title" id="form-title"></h5>
+		   	<table class="table table-bordered">
+		   		<form id="form_data">
+					<!-- input hidden untuk type -->
+					<input type="hidden" name="type" value="create">
+			        <div class="form-group">
+			        	<label>Nama</label>
+			        	<input type="text" name="nama" class="form-control">
+			        </div>
+			        <button type="button" class="btn btn-primary" onclick="AuthorsController('save')">Save</button>
+		    	</form>
+		   	</table>
+		  </div>
+		</div>
+    </div>
+    <div class="col-md-6" id="list_div">
+    	<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title">List Authors
+		    	<button type="button" class="btn btn-xs btn-primary float-right" onclick="AuthorsController('add')">Add</button>
+		    </h5>
+		   	<table class="table table-bordered">
+		   		<thead>
+		   			<tr>
+		   				<th>Nama</th>
+		   			</tr>
+		   		</thead>
+		   		<tbody id="list_data">
+		   			<!-- nanti data di masukan ke sini -->
+		   		</tbody>
+		   	</table>
+		  </div>
+		</div>
+    </div>
+</div>

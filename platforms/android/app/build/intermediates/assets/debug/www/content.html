@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from byrushan.com/projects/material-admin/app/2.1/jquery/bs4/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Apr 2018 06:59:10 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Vendor styles -->
+        <link rel="stylesheet" href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css">
+        <link rel="stylesheet" href="vendors/bower_components/jquery.scrollbar/jquery.scrollbar.css">
+        <link rel="stylesheet" href="vendors/bower_components/fullcalendar/dist/fullcalendar.min.css">
+        <link rel="stylesheet" href="vendors/bower_components/sweetalert2/dist/sweetalert2.min.css">
+        <style>
+          #map-canvas{
+            width: 100%;
+            height: 400px;
+          }
+        </style>
+
+        <!-- App styles -->
+        <link rel="stylesheet" href="css/app.min.css">
+    </head>
+
+    <body data-ma-theme="blue">
+        <main class="main">
+            <div class="page-loader">
+                <div class="page-loader__spinner">
+                    <svg viewBox="25 25 50 50">
+                        <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </div>
+            <header class="header">
+                <div class="navigation-trigger hidden-xl-up" data-ma-action="aside-open" data-ma-target=".sidebar">
+                    <div class="navigation-trigger__inner">
+                        <i class="navigation-trigger__line"></i>
+                        <i class="navigation-trigger__line"></i>
+                        <i class="navigation-trigger__line"></i>
+                    </div>
+                </div>
+                <div class="header__logo hidden-sm-down"></div>
+            </header>
+            
+
+            <aside class="sidebar">
+                <div class="scrollbar-inner">
+                     <ul class="navigation">
+                         <li class="">
+                            <a href="index.html"><i class="zmdi zmdi-home"></i> Home</a>
+                        </li>
+                        <li class="">
+                            <a href="agenda.html"><i class="zmdi zmdi-calendar"></i> Agenda</a>
+                        </li>
+                        <li class="navigation__active">
+                            <a href="content.html"><i class="zmdi zmdi-info"></i> Konten</a>
+                        </li>
+                        <li class="">
+                            <a href="blog.html"><i class="zmdi zmdi-attachment"></i> Blog</a>
+                        </li>
+                        <li class="">
+                            <a href="kontak.html"><i class="zmdi zmdi-account-box"></i> Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="demo" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                          <ul class="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                            <li data-target="#demo" data-slide-to="1"></li>
+                            <li data-target="#demo" data-slide-to="2"></li>
+                          </ul>
+                          
+                          <!-- The slideshow -->
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img src=""  id="slide0">
+                              <div class="carousel-caption">
+                                <p id="caption0"></p>
+                              </div>
+                            </div>
+                            <div class="carousel-item">
+                              <img src=""  id="slide1">
+                              <div class="carousel-caption">
+                                <p id="caption1"></p>
+                              </div>
+                            </div>
+                            <div class="carousel-item">
+                              <img src=""  id="slide2">
+                              <div class="carousel-caption">
+                                <p id="caption2"></p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Left and right controls -->
+                          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                            
+                          </a>
+                          <a class="carousel-control-next" href="#demo" data-slide="next">
+                            
+                          </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card todo">
+                            <div class="card-body">
+                                <h4 class="card-title">Kutipan</h4>
+                                <h6 class="card-subtitle" id="kutipan"></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card todo">
+                            <div class="card-body">
+                                <h4 class="card-title">Tentang</h4>
+                                <h6 class="card-subtitle" id="tentang"></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card todo">
+                            <div class="card-body">
+                                <h4 class="card-title">Visi</h4>
+                                <h6 class="card-subtitle" id="visi"></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card todo">
+                            <div class="card-body">
+                                <h4 class="card-title">Misi</h4>
+                                <h6 class="card-subtitle" id="misi"></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card todo">
+                            <div class="card-body">
+                                <h4 class="card-title">Lokasi</h4>
+                                <h6 class="card-subtitle" id="lokasi"></h6>
+                                <div id="map-canvas"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Older IE warning message -->
+            <!--[if IE]>
+                <div class="ie-warning">
+                    <h1>Warning!!</h1>
+                    <p>You are using an outdated version of Internet Explorer, please upgrade to any of the following web browsers to access this website.</p>
+
+                    <div class="ie-warning__downloads">
+                        <a href="http://www.google.com/chrome">
+                            <img src="img/browsers/chrome.png" alt="">
+                        </a>
+
+                        <a href="https://www.mozilla.org/en-US/firefox/new">
+                            <img src="img/browsers/firefox.png" alt="">
+                        </a>
+
+                        <a href="http://www.opera.com">
+                            <img src="img/browsers/opera.png" alt="">
+                        </a>
+
+                        <a href="https://support.apple.com/downloads/safari">
+                            <img src="img/browsers/safari.png" alt="">
+                        </a>
+
+                        <a href="https://www.microsoft.com/en-us/windows/microsoft-edge">
+                            <img src="img/browsers/edge.png" alt="">
+                        </a>
+
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="img/browsers/ie.png" alt="">
+                        </a>
+                    </div>
+                    <p>Sorry for the inconvenience!</p>
+                </div>
+            <![endif]-->
+
+        <!-- Javascript -->
+        <!-- Vendors -->
+        <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="vendors/bower_components/popper.js/dist/umd/popper.min.js"></script>
+        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="vendors/bower_components/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="vendors/bower_components/jquery-scrollLock/jquery-scrollLock.min.js"></script>
+
+        <script src="vendors/bower_components/Flot/jquery.flot.js"></script>
+        <script src="vendors/bower_components/Flot/jquery.flot.resize.js"></script>
+        <script src="vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+        <script src="vendors/bower_components/jqvmap/dist/jquery.vmap.min.js"></script>
+        <script src="vendors/bower_components/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script src="vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        <script src="vendors/bower_components/salvattore/dist/salvattore.min.js"></script>
+        <script src="vendors/jquery.sparkline/jquery.sparkline.min.js"></script>
+        <script src="vendors/bower_components/moment/min/moment.min.js"></script>
+        <script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+
+        <!-- Charts and maps-->
+        <script src="demo/js/flot-charts/curved-line.js"></script>
+        <script src="demo/js/flot-charts/dynamic.js"></script>
+        <script src="demo/js/flot-charts/line.js"></script>
+        <script src="demo/js/flot-charts/chart-tooltips.js"></script>
+        <script src="demo/js/other-charts.js"></script>
+        <script src="demo/js/jqvmap.js"></script>
+        <script src="vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+        <script src="js/index.js"></script>
+
+        <!-- App functions and actions -->
+        <script src="js/app.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7ux0CVng-weBxmxNS7GpThvJvFqtLAQ&amp;libraries=places"></script>
+         <script type="text/javascript" charset="utf-8">
+
+            function onLoad()
+            {
+                  document.addEventListener("deviceready", onDeviceReady, true);
+            }
+
+            function exitFromApp()
+             {
+                navigator.app.exitApp();
+             }
+
+        </script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $.get('http://192.168.43.148:8000/coursel',function (data) {
+               $.each(data,function (idx,value) {
+                   $.each(value,function (i,v) {
+                       $('#slide'+idx).attr('src','http://192.168.43.148:8000/img/slide/'+i);
+                       $('#caption'+idx).text(v);
+                   });
+                   
+               })
+            })
+            $.ajax({
+                type: "GET",
+                url: 'http://192.168.43.148:8000/listcontent',
+                dataType: 'json',
+                crossDomain: true,
+                cache: false,
+                success: function(data) {
+                   $.each(data,function (idx,value) {
+                       $('#kutipan').html(value.quotes);
+                       $('#tentang').html(value.tentang);
+                       $('#visi').html(value.visi);
+                       $('#misi').html(value.misi);
+                       $('#lokasi').html(value.lokasi);
+                          var map = new google.maps.Map(document.getElementById('map-canvas'),{
+                            center:{
+                              lat: parseFloat(value.lat),
+                              lng: parseFloat(value.lng)
+                            },
+                            zoom:15
+                          });
+
+                          var marker = new google.maps.Marker({
+                            position: {
+                              lat: parseFloat(value.lat),
+                              lng: parseFloat(value.lng)
+                            },
+                            map: map,
+                            draggable: false
+                          });
+                   })
+                },
+                error: function() {
+                    swal({title: 'Tidak Ada koneksi !',text: "",type: 'info'}).then(function () {exitFromApp()}, function (dismiss) {return false})
+                }
+            });
+        })
+    </script>
+    </body>
+
+<!-- Mirrored from byrushan.com/projects/material-admin/app/2.1/jquery/bs4/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Apr 2018 07:01:27 GMT -->
+</html>

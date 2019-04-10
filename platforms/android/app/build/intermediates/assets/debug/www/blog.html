@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from byrushan.com/projects/material-admin/app/2.1/jquery/bs4/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Apr 2018 06:59:10 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Vendor styles -->
+        <link rel="stylesheet" href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css">
+        <link rel="stylesheet" href="vendors/bower_components/jquery.scrollbar/jquery.scrollbar.css">
+        <link rel="stylesheet" href="vendors/bower_components/fullcalendar/dist/fullcalendar.min.css">
+        <link rel="stylesheet" href="vendors/bower_components/sweetalert2/dist/sweetalert2.min.css">
+        <link rel="stylesheet" href="demo/css/demo.css">
+        <style>
+          #map-canvas{
+            width: 100%;
+            height: 400px;
+          }
+        </style>
+
+        <!-- App styles -->
+        <link rel="stylesheet" href="css/app.min.css">
+    </head>
+
+    <body data-ma-theme="blue">
+        <main class="main">
+            <div class="page-loader">
+                <div class="page-loader__spinner">
+                    <svg viewBox="25 25 50 50">
+                        <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </div>
+            <header class="header">
+
+                <div class="navigation-trigger hidden-xl-up" data-ma-action="aside-open" data-ma-target=".sidebar">
+                    <div class="navigation-trigger__inner">
+                        <i class="navigation-trigger__line"></i>
+                        <i class="navigation-trigger__line"></i>
+                        <i class="navigation-trigger__line"></i>
+                    </div>
+                </div>
+                <div class="header__logo hidden-sm-down"></div>
+            </header>
+            
+
+            <aside class="sidebar">
+                <div class="scrollbar-inner">
+                     <ul class="navigation">
+                         <li class="">
+                            <a href="index.html"><i class="zmdi zmdi-home"></i> Home</a>
+                        </li>
+                        <li class="">
+                            <a href="agenda.html"><i class="zmdi zmdi-calendar"></i> Agenda</a>
+                        </li>
+                        <li class="">
+                            <a href="content.html"><i class="zmdi zmdi-info"></i> Konten</a>
+                        </li>
+                        <li class="navigation__active">
+                            <a href="blog.html"><i class="zmdi zmdi-attachment"></i> Blog</a>
+                        </li>
+                        <li class="">
+                            <a href="kontak.html"><i class="zmdi zmdi-account-box"></i> Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <section class="content">
+                <div class="toolbar">
+                    <nav class="toolbar__nav">
+                        <a class="active">Cari</a>
+                    </nav>
+
+                    <div class="actions">
+                        <i class="actions__item zmdi zmdi-search" data-ma-action="toolbar-search-open"></i>
+                        <a href="#" class="actions__item zmdi zmdi-info-outline hidden-xs-down"></a>
+                    </div>
+
+                    <div class="toolbar__search">
+                        <input type="text" placeholder="Ketik Sesuatu..." id="search">
+
+                        <i class="toolbar__search__close zmdi zmdi-long-arrow-left" data-ma-action="toolbar-search-close"></i>
+                    </div>
+                </div>
+                <div class="card todo">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog </h4>
+                        <h6 class="card-subtitle" id="lokasi">Kami menyajikan laporan hasil pengelolaan,dan informasi seputar islam lainnya.</h6>
+                    </div>
+                </div>
+                <div id="isi">
+                    
+                </div>
+            </section>
+            <div id="pager" style="padding-left: 100px;">
+                <ul id="pagination" class="pagination-md"></ul>
+            </div>  
+        </main>
+
+        <!-- Javascript -->
+        <!-- Vendors -->
+        <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="vendors/bower_components/popper.js/dist/umd/popper.min.js"></script>
+        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="vendors/bower_components/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="vendors/bower_components/jquery-scrollLock/jquery-scrollLock.min.js"></script>
+
+        <script src="vendors/bower_components/Flot/jquery.flot.js"></script>
+        <script src="vendors/bower_components/Flot/jquery.flot.resize.js"></script>
+        <script src="vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+        <script src="vendors/bower_components/jqvmap/dist/jquery.vmap.min.js"></script>
+        <script src="vendors/bower_components/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script src="vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        <script src="vendors/bower_components/salvattore/dist/salvattore.min.js"></script>
+        <script src="vendors/jquery.sparkline/jquery.sparkline.min.js"></script>
+        <script src="vendors/bower_components/moment/min/moment.min.js"></script>
+        <script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+
+        <!-- Charts and maps-->
+        <script src="demo/js/flot-charts/curved-line.js"></script>
+        <script src="demo/js/flot-charts/dynamic.js"></script>
+        <script src="demo/js/flot-charts/line.js"></script>
+        <script src="demo/js/flot-charts/chart-tooltips.js"></script>
+        <script src="demo/js/other-charts.js"></script>
+        <script src="demo/js/jqvmap.js"></script>
+        <script src="vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+
+
+        <!-- App functions and actions -->
+        <script src="js/app.min.js"></script>
+        <script src="js/index.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7ux0CVng-weBxmxNS7GpThvJvFqtLAQ&amp;libraries=places"></script>
+        <script src="js/jquery.paginate.min.js"></script>
+        <script type="text/javascript">
+        function all(){
+            $('#search').blur(function(){
+                if(!$('#search').val()){
+                    all();
+                }else{
+                    $.ajax({
+                        dataType: 'json',
+                        method: 'GET',
+                        data: {
+                            'search' : $('#search').val()
+                          },
+                        url: 'http://192.168.43.148:8000/search',
+                        success: function(data){
+                                datas = data;
+                                totalDatas = datas.length;
+                                totalPages = Math.ceil(totalDatas / datPerPage);
+                                $pagination.twbsPagination('destroy');
+                                if(datas.length == 0){
+                                    $('#isi').html('');
+                                    $('#isi').append('<p>Tidak Ada hasil</p>');
+                                }else{
+                                    apply_pagination()
+                                }   
+                        },
+                        error:function() {
+                            swal({title: 'Tidak Ada koneksi !',text: "",type: 'info'}).then(function () {return exitFromApp()}, function (dismiss) {return false})
+                        }
+                    });
+                }
+            })
+            var $pagination = $('#pagination'),
+                totalDatas = 0,
+                datas = [],
+                displayDatas = [],
+                datPerPage = 3,
+                page = 1,
+                totalPages = 0;
+
+            $.ajax({
+                dataType: 'json',
+                method: 'GET',
+                url: 'http://192.168.43.148:8000/listdata',
+                success: function(data){
+                        datas = data;
+                        totalDatas = datas.length;
+                        totalPages = Math.ceil(totalDatas / datPerPage);
+                        $pagination.twbsPagination('destroy');
+                        if(datas.length == 0){
+                            $('#isi').html('');
+                            $('#isi').append('<p>Tidak Ada data</p>');
+                        }else{
+                            apply_pagination()
+                        }   
+                },
+                error:function() {
+                    swal({title: 'Tidak Ada koneksi !',text: "",type: 'info'}).then(function () {return exitFromApp()}, function (dismiss) {return false})
+                }
+            });
+            function generate_data_search() {
+                $('#isi').html('');
+                $.each(displayDatas, function(i,value) {
+                var d = 
+                    '<div class="card">'+
+                        '<img class="card-img-top" src="http://192.168.43.148:8000/img/cover/'+value.picture+'" alt="image" style="width:100%">'+
+                        '<div class="card-body">'+
+                            '<h4 class="card-title">'+value.judul+'</h4>'+
+                            '<h6 class="card-subtitle"><i class="zmdi zmdi-edit"></i>Admin, <i class="zmdi zmdi-tag"></i> '+value.kategori+'</h6>'+
+                            '<p class="card-text">'+value.content.substring(0, 100)+'...</p>'+
+                            '<a class="btn btn-primary" href="show.html?id='+value.id+'">Selengkapnya</a>'+
+                        '</div>'+
+                    '</div>';
+                    $('#isi').append(d);
+                });
+            }
+            function generate_data() {
+                $('#isi').html('');
+                $.each(displayDatas, function(i,value) {
+                var d = 
+                    '<div class="card">'+
+                        '<img class="card-img-top" src="http://192.168.43.148:8000/img/cover/'+value.picture+'" alt="image" style="width:100%">'+
+                        '<div class="card-body">'+
+                            '<h4 class="card-title">'+value.judul+'</h4>'+
+                            '<h6 class="card-subtitle"><i class="zmdi zmdi-edit"></i>Admin, <i class="zmdi zmdi-tag"></i> '+value.kategori.kategori+'</h6>'+
+                            '<p class="card-text">'+value.content.substring(0, 100)+'...</p>'+
+                            '<a class="btn btn-primary" href="show.html?id='+value.id+'">Selengkapnya</a>'+
+                        '</div>'+
+                    '</div>';
+                    $('#isi').append(d);
+                });
+            }
+            function apply_pagination() {
+                $pagination.twbsPagination({
+                    totalPages: totalPages,
+                    visiblePages: 6,
+                    first: "<<",
+                    prev: "<",
+                    next: ">",
+                    last: ">>",
+                    onPageClick: function (event, page) {
+                        displayDatasIndex = Math.max(page - 1, 0) * datPerPage;
+                        endDat = (displayDatasIndex) + datPerPage;
+                        displayDatas = datas.slice(displayDatasIndex, endDat);
+                        if(!$('#search').val()){
+                            generate_data();
+                        }else{
+                            generate_data_search();
+                        }
+                    }
+                });
+            }
+        }
+        // function all(){
+        //     $.get( "http://192.168.43.148:8000/listdata", function( data ) {
+        //         $.each( data, function( key, value ) {
+
+        //           var data =    '<div class="card">'+
+        //                             '<img class="card-img-top" src="http://192.168.43.148:8000/img/cover/'+value.picture+'" alt="image" style="width:100%">'+
+        //                             '<div class="card-body">'+
+        //                                 '<h4 class="card-title">'+value.judul+'</h4>'+
+        //                                 '<h6 class="card-subtitle"><i class="zmdi zmdi-edit"></i> by Admin, <i class="zmdi zmdi-tag"></i> '+value.kategori.kategori+'</h6>'+
+        //                                 '<p class="card-text">'+value.content.substring(0, 100)+'...</p>'+
+        //                                 '<a class="btn btn-primary" href="show.html?id='+value.id+'">Selengkapnya</a>'+
+        //                             '</div>'+
+        //                         '</div>';
+        //           $('#isi').append(data);
+        //         });
+        //     });
+        // }
+        $(document).ready(function () {
+            all();
+            if($('#search').val == null){
+                $('#isi').html('');
+                all();
+            }
+        })
+    </script>
+    </body>
+
+<!-- Mirrored from byrushan.com/projects/material-admin/app/2.1/jquery/bs4/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Apr 2018 07:01:27 GMT -->
+</html>
